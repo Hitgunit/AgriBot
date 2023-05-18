@@ -16,46 +16,55 @@ object BotResponse {
         return when {
 
             //Flips a coin
-            message.contains("lanza") || message.contains("moneda") -> {
+            message.contains("lanza") && message.contains("moneda") -> {
                 val r = (0..1).random()
-                val result = if (r == 0) "Sello" else "Águila"
+                val result = if (r == 0) "cara" else "águila"
 
                 "Lanze una moneda y resulto en $result"
             }
 
             //Math calculations
-            message.contains("solve") -> {
+            message.contains("resuelve") -> {
                 val equation: String? = message.substringAfterLast("solve")
                 return try {
                     val answer = SolveMath.solveMath(equation ?: "0")
                     "$answer"
 
                 } catch (e: Exception) {
-                    "Sorry, I can't solve that."
+                    "Lo siento, no pude resolverlo"
                 }
             }
 
             //Hello
-            message.contains("hello") -> {
+            message.contains("hola") || message.contains("onda") || message.contains("holi") || message.contains("tal") -> {
                 when (random) {
-                    0 -> "Hello there!"
-                    1 -> "Sup"
+                    0 -> "Hola compañero"
+                    1 -> "Que onda"
                     2 -> "Buongiorno!"
                     else -> "error" }
             }
 
             //How are you?
-            message.contains("how are you") -> {
+            message.contains("estas") || message.contains("estás")-> {
                 when (random) {
-                    0 -> "I'm doing fine, thanks!"
-                    1 -> "I'm hungry..."
-                    2 -> "Pretty good! How about you?"
+                    0 -> "Estoy bien, muchas gracias"
+                    1 -> "Excelente y tu que tal?"
+                    2 -> "Muy bien, gracias!"
+                    else -> "error"
+                }
+            }
+
+            message.contains("excelente") || message.contains("bien") || message.contains("perfecto")-> {
+                when (random) {
+                    0 -> "Estoy bien, muchas gracias"
+                    1 -> "Excelente y tu que tal?"
+                    2 -> "Muy bien, gracias!"
                     else -> "error"
                 }
             }
 
             //What time is it?
-            message.contains("time") && message.contains("?")-> {
+            message.contains("día") && message.contains("hoy") || message.contains("hora")-> {
                 val timeStamp = Timestamp(System.currentTimeMillis())
                 val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
                 val date = sdf.format(Date(timeStamp.time))
@@ -76,9 +85,10 @@ object BotResponse {
             //When the programme doesn't understand...
             else -> {
                 when (random) {
-                    0 -> "I don't understand..."
-                    1 -> "Try asking me something different"
-                    2 -> "Idk"
+                    0 -> "Prueba otra cosa"
+                    1 -> "Prueba preguntando algo diferente"
+                    2 -> "No entendi, pregunta algo diferente"
+                    3 -> "Lo siento, no entendi tu pregunta"
                     else -> "error"
                 }
             }

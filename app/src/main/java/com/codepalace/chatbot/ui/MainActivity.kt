@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     var messagesList = mutableListOf<Message>()
 
     private lateinit var adapter: MessagingAdapter
-    private val botList = listOf("Peter", "Francesca", "Luigi", "Igor")
+    private val botList = listOf("AgriBot", "AgricolaBot", "Bot", "Agri")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         clickEvents()
 
         val random = (0..3).random()
-        customBotMessage("Hello! Today you're speaking with ${botList[random]}, how may I help?")
+        customBotMessage("Hola!! estas habalndo con ${botList[random]}, estoy aqui para apoyarte, dime tu problema y te dire como resolverlo")
     }
 
     private fun clickEvents() {

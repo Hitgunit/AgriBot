@@ -16,11 +16,11 @@ object BotResponse {
         return when {
 
             //Flips a coin
-            message.contains("flip") && message.contains("coin") -> {
+            message.contains("lanza") || message.contains("moneda") -> {
                 val r = (0..1).random()
-                val result = if (r == 0) "heads" else "tails"
+                val result = if (r == 0) "Sello" else "Águila"
 
-                "I flipped a coin and it landed on $result"
+                "Lanze una moneda y resulto en $result"
             }
 
             //Math calculations

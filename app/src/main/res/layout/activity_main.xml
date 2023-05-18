@@ -36,7 +36,7 @@
             android:layout_weight="1"
             android:background="@drawable/round_button"
             android:backgroundTint="#26A69A"
-            android:text="Send"
+            android:text="Enviar"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
@@ -46,14 +46,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/ll_layout_bar"
-        android:layout_below="@+id/dark_divider"
+        android:layout_marginTop="-1dp"
+        android:layout_marginBottom="1dp"
         tools:itemCount="20"
-        tools:listitem="@layout/message_item" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="#42A5F5"
-        android:id="@+id/dark_divider"/>
+        tools:listitem="@layout/message_item"
+        android:background="@color/backgorund"
+        />
+
+
 
 
 </RelativeLayout>

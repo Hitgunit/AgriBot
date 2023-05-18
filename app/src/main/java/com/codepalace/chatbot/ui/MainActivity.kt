@@ -17,30 +17,29 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
-    private val TAG = "MainActivity"
 
-    //You can ignore this messageList if you're coming from the tutorial,
-    // it was used only for my personal debugging
+
     var messagesList = mutableListOf<Message>()
 
     private lateinit var adapter: MessagingAdapter
-    private val botList = listOf("AgriBot", "AgricolaBot", "Bot", "Agri")
+    private val botList = listOf("AgriBot", "AgricolaBot", "Agri")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         recyclerView()
 
         clickEvents()
 
         val random = (0..3).random()
-        customBotMessage("Hola!! estas habalndo con ${botList[random]}, estoy aqui para apoyarte, dime tu problema y te dire como resolverlo")
+        customBotMessage("¡Hola! estas habalndo con ${botList[random]}, estoy aqui para apoyarte solo dime tu problema y te dire como resolverlo")
     }
 
     private fun clickEvents() {
 
-        //Send a message
+        //Enviar mensaje
         btn_send.setOnClickListener {
             sendMessage()
         }

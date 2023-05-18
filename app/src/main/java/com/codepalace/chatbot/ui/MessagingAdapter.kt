@@ -18,19 +18,13 @@ class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>
     var messagesList = mutableListOf<Message>()
 
     inner class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        init {
-            itemView.setOnClickListener {
 
-                //Remove message on the item clicked
-                messagesList.removeAt(adapterPosition)
-                notifyItemRemoved(adapterPosition)
-            }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
         return MessageViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.message_item, parent, false)
+
         )
     }
 
@@ -49,6 +43,12 @@ class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>
                     visibility = View.VISIBLE
                 }
                 holder.itemView.tv_bot_message.visibility = View.GONE
+
+                holder.itemView.iv_bot.apply {
+                    visibility = View.VISIBLE
+                }
+                holder.itemView.iv_bot.visibility = View.GONE
+
             }
             RECEIVE_ID -> {
                 holder.itemView.tv_bot_message.apply {
@@ -56,6 +56,11 @@ class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>
                     visibility = View.VISIBLE
                 }
                 holder.itemView.tv_message.visibility = View.GONE
+
+                holder.itemView.iv_user.apply {
+                    visibility = View.VISIBLE
+                }
+                holder.itemView.iv_user.visibility = View.GONE
             }
         }
     }

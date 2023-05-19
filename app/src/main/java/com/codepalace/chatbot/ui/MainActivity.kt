@@ -1,7 +1,5 @@
 package com.codepalace.chatbot.ui
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,8 +8,6 @@ import com.codepalace.chatbot.data.Message
 import com.codepalace.chatbot.utils.Constants.RECEIVE_ID
 import com.codepalace.chatbot.utils.Constants.SEND_ID
 import com.codepalace.chatbot.utils.BotResponse
-import com.codepalace.chatbot.utils.Constants.OPEN_GOOGLE
-import com.codepalace.chatbot.utils.Constants.OPEN_SEARCH
 import com.codepalace.chatbot.utils.Time
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
@@ -19,7 +15,7 @@ import kotlinx.coroutines.*
 class MainActivity : AppCompatActivity() {
 
 
-    var messagesList = mutableListOf<Message>()
+    private var messagesList = mutableListOf<Message>()
 
     private lateinit var adapter: MessagingAdapter
     private val botList = listOf("AgriBot", "AgricolaBot", "Agri")
@@ -111,21 +107,7 @@ class MainActivity : AppCompatActivity() {
                 //Scrolls us to the position of the latest message
                 rv_messages.scrollToPosition(adapter.itemCount - 1)
 
-                //Starts Google
-                when (response) {
-                    OPEN_GOOGLE -> {
-                        val site = Intent(Intent.ACTION_VIEW)
-                        site.data = Uri.parse("https://www.google.com/")
-                        startActivity(site)
-                    }
-                    OPEN_SEARCH -> {
-                        val site = Intent(Intent.ACTION_VIEW)
-                        val searchTerm: String? = message.substringAfterLast("search")
-                        site.data = Uri.parse("https://www.google.com/search?&q=$searchTerm")
-                        startActivity(site)
-                    }
 
-                }
             }
         }
     }

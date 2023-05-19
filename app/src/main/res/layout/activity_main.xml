@@ -21,19 +21,22 @@
             android:id="@+id/et_message"
             android:inputType="textShortMessage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_margin="10dp"
             android:layout_weight=".5"
             android:background="@drawable/round_button"
             android:backgroundTint="@android:color/white"
             android:hint="Escribe un mensaje..."
             android:padding="10dp"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:importantForAutofill="yes"
+            android:autofillHints="textShortMessage" />
+
 
         <Button
             android:id="@+id/btn_send"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="48dp"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/round_button"

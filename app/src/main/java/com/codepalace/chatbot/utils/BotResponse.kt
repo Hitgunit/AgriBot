@@ -56,9 +56,18 @@ object BotResponse {
 
             message.contains("excelente") || message.contains("bien") || message.contains("perfecto")-> {
                 when (random) {
-                    0 -> "Estoy bien, muchas gracias"
-                    1 -> "Excelente y tu que tal?"
-                    2 -> "Muy bien, gracias!"
+                    0 -> "Me alegro"
+                    1 -> "Muy bien"
+                    2 -> "Bien, asi debe de ser siempre"
+                    else -> "error"
+                }
+            }
+
+            message.contains("mal") || message.contains("jodido") || message.contains("triste")-> {
+                when (random) {
+                    0 -> "Lamento que estes asi, recuerda que siempre hay un mañana mejor"
+                    1 -> "Lamento escuchar eso, espero y te sientas mejor"
+                    2 -> ":("
                     else -> "error"
                 }
             }
